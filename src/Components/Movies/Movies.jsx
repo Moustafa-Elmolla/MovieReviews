@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  let mediaType = 'movie'
-  let nums = new Array(10).fill(1).map((ele, index) => index +1)
+  let mediaType = "movie";
+  let nums = new Array(10).fill(1).map((ele, index) => index + 1);
   // console.log(nums);
   async function getTrending(page) {
     setIsLoading(true);
@@ -23,6 +24,10 @@ export default function Movies() {
   }, []);
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Movies</title>
+      </Helmet>
       {isLoading ? (
         <div className="d-flex vh-100 justify-content-center align-items-center">
           <i className="fas fa-spinner fa-spin fa-8x"></i>
@@ -53,13 +58,20 @@ export default function Movies() {
         </div>
       )}
       <nav className="py-5">
-  <ul className="pagination pagination-sm justify-content-center">
-    {nums.map((page)=> <li key={page} onClick={()=> getTrending(page)} className="page-item p-1">
-      <Link className="page-link bg-transparent text-white">{page}</Link>
-    </li>)}
-    
-  </ul>
-</nav>
+        <ul className="pagination pagination-sm justify-content-center">
+          {nums.map((page) => (
+            <li
+              key={page}
+              onClick={() => getTrending(page)}
+              className="page-item p-1"
+            >
+              <Link className="page-link bg-transparent text-white">
+                {page}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </>
   );
 }

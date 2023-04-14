@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 export default function Tvshow() {
@@ -23,6 +24,10 @@ export default function Tvshow() {
   }, []);
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>TvShow</title>
+            </Helmet>
       {isLoading ? (
         <div className="d-flex vh-100 justify-content-center align-items-center">
           <i className="fas fa-spinner fa-spin fa-8x"></i>

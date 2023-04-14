@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useFormik } from 'formik';
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
@@ -42,6 +43,10 @@ export default function Register() {
   }
   return (
     <>
+    <Helmet>
+                <meta charSet="utf-8" />
+                <title>Register</title>
+            </Helmet>
     <div className="w-75 m-auto">
       <h3>Register :</h3>
       <form onSubmit={formik.handleSubmit}>
